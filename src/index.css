@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --white: #ffffff;
+  --bg: #fffdfb;
+  --cream: #faf1e6;
+  --surface: #ffffff;
+  --text: #3d2a22;
+  --text-soft: #85685b;
+  --accent: #e7b4c2;
+  --accent-strong: #d98ba0;
+  --border: #efe1d0;
+  --border-pink: #f1dce3;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #2b2420;
+    --cream: #35291f;
+    --surface: #322721;
+    --text: #f7ece0;
+    --text-soft: #d8c2b4;
+    --accent: #e7b4c2;
+    --accent-strong: #f0c7d2;
+    --border: #46372c;
+    --border-pink: #4a3630;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #2b2420;
+  --cream: #35291f;
+  --surface: #322721;
+  --text: #f7ece0;
+  --text-soft: #d8c2b4;
+  --accent: #e7b4c2;
+  --accent-strong: #f0c7d2;
+  --border: #46372c;
+  --border-pink: #4a3630;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.font-display {
+  font-family: "Fraunces", ui-serif, Georgia, serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--text);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-rise {
+  animation: riseIn 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.hero-rise-delay {
+  animation: riseIn 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.18s both;
+}
+.hero-rise-delay-2 {
+  animation: riseIn 1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.32s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise,
+  .hero-rise-delay,
+  .hero-rise-delay-2 {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.bottle-float {
+  animation: floaty 6s ease-in-out infinite;
+}
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bottle-float {
+    animation: none;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.snap-x-child {
+  scroll-snap-align: start;
+}
